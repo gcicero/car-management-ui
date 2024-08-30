@@ -3,6 +3,7 @@ import './App.css';
 import ListaProdutos from './Componentes/ListaProdutos';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import CadastraProduto from './Componentes/CadastroProduto';
 
 function App() {
   const [produtos, setProdutos] = useState([]);
@@ -24,6 +25,7 @@ function App() {
     <div>
       <h1>Lista de Produts</h1>
       <ListaProdutos produtos={produtos}/>
+      <CadastraProduto carregarProdutos={carregarProdutos}/>
     </div>  
   );
 }
