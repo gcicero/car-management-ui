@@ -9,11 +9,11 @@ function App() {
   const [produtos, setProdutos] = useState([]);
   
   useEffect(()=>{
-    carregarProdutos();
+    carregaProdutos();
   }, []);
   
 
-  function carregarProdutos(){
+  function carregaProdutos(){
     axios.get("https://app-api-tapwm.onrender.com/api/produtos")
       .then(res=>{
         setProdutos( res.data);
@@ -24,8 +24,8 @@ function App() {
   return (
     <div>
       <h1>Lista de Produts</h1>
-      <ListaProdutos produtos={produtos}/>
-      <CadastraProduto carregarProdutos={carregarProdutos}/>
+      <ListaProdutos produtos={produtos} carregaProdutos={carregaProdutos}/>
+      <CadastraProduto carregaProdutos={carregaProdutos}/>
     </div>  
   );
 }
