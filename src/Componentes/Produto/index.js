@@ -15,7 +15,7 @@ const Produto = ({valor, carregaProdutos}) => {
     )
 
     function remover(id){
-        let api = "https://app-api-tapw.onrender.com/api/produtos"
+        let api = "https://app-api-tapwm.onrender.com/api/produtos"
         axios.delete(`${api}/${id}`)
             .then(()=>{
                 carregaProdutos();
