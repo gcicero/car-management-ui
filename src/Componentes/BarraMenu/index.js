@@ -42,7 +42,7 @@ class BarraMenu extends React.Component {
 <MenuLink href="/">Home</MenuLink>
 </MenuItem>
 <MenuItem>
-<MenuLink href="/CadastroProduto">Cadastro</MenuLink>
+<MenuLink href="/CadastroCarro">Cadastro</MenuLink>
 </MenuItem>
 <MenuItem>
 <MenuLink href="#">Serviços</MenuLink>

@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import PaginaCadastroProd from './Componentes/Paginas/PaginaCadastroProduto';
+import PaginaCadastroProd from './Componentes/Paginas/PaginaCadastroCarro';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +12,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/CadastroProduto" element={<PaginaCadastroProd />} />
+        <Route path="/CadastroCarro" element={<PaginaCadastroProd />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

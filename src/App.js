@@ -1,26 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
-import ListaProdutos from './Componentes/ListaProdutos'
+import ListaCarros from './Componentes/ListaCarros'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import CadastroProduto from './Componentes/CadastroProduto';
+import CadastroCarro from './Componentes/CadastroCarro';
 import BarraMenu from './Componentes/BarraMenu';
 
 
 
 
 function App() {
-  const [produtos, setProdutos] = useState([]);
+  const [carros, setCarros] = useState([]);
   useEffect(()=>{
-    carregaProdutos();
+    carregaCarros();
   }, []);
 
 
-  function carregaProdutos() {
-    axios.get('https://app-api-tapwm.onrender.com/api/produtos')
+  function carregaCarros() {
+    axios.get('https://webimotores.onrender.com/api/carros')
       .then(res=>{
-        setProdutos(res.data);
-        //console.log(produtos);
+        setCarros(res.data);
+        console.log(carros);
     });
   }
 
@@ -28,9 +28,9 @@ function App() {
   return (
     <div>
       <BarraMenu />
-      <h1>Lista Produtos</h1>
-      <ListaProdutos produtos = {produtos} carregaProdutos = {carregaProdutos} />
-      <CadastroProduto carregaProdutos = {carregaProdutos} />
+      <h1>Lista Carros</h1>
+      <ListaCarros carros = {carros} carregaCarros = {carregaCarros} />
+      <CadastroCarro carregaCarros = {carregaCarros} />
       
     </div>
   );
