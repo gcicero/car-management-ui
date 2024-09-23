@@ -17,12 +17,16 @@ function App() {
 
 
   function carregaCarros() {
-    axios.get('https://webimotores.onrender.com/api/carros')
-      .then(res=>{
+    axios.get('https://webimotores.onrender.com/carros')
+      .then(res => {
         setCarros(res.data);
-        console.log(carros);
-    });
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.error("Erro ao carregar carros:", error);
+      });
   }
+  
 
 
   return (

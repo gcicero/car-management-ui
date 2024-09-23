@@ -1,38 +1,52 @@
 import axios from "axios";
+import { useState } from "react";
 
-export default function CadastroCarro({carregaCarros}) {
-    return (
-        <div className="card">
-            <h3 className="titulo"> Cadastro de Carros</h3>
-            <form>
-                <label>Nome:</label>
-                <input type="text" id="nome" name="nome"></input>
-                <br/>
-                <label>Preço:</label>
-                <input type="text" id="preco" name="preco"></input>
-                <br/>
-                <label>Foto:</label>
-                <input type="text" id="foto" name="foto"></input>
-                <br/>
-                <label>Descrição:</label>
-                <input type="text" id="descricao" name="descricao"></input>
-                <br/><br/>
-                <button type="button" onClick={adicionaCarro}>Adicionar</button>
-            </form>
-        </div>
-    );
+export default function CadastroCarro({ carregaCarros }) {
+  const [nome, setNome] = useState('');
+  const [preco, setPreco] = useState('');
+  const [foto, setFoto] = useState('');
+  const [descricao, setDescricao] = useState('');
 
-    function adicionaCarro(){
-        const nome = document.getElementById('nome').value;
-        const preco = document.getElementById('preco').value;
-        const foto = document.getElementById('foto').value;
-        const descricao = document.getElementById('descricao').value;
-        const carro = {nome, preco, foto, descricao};
-        console.log(carro);
-        axios.post('https://app-api-tapwm.onrender.com/api/carros',carros)
-        .then(()=>{
-            carregaCarros();
-        });
+  function adicionaCarro() {
+    if (!nome || !preco || !foto || !descricao) {
+      alert("Todos os campos são obrigatórios!");
+      return;
     }
 
+    const carro = { nome, preco, foto, descricao };
+    console.log(carro);
+    axios.post('https://webimotores.onrender.com/carros', carro)
+      .then(() => {
+        carregaCarros();
+        // Limpar campos após adicionar
+        setNome('');
+        setPreco('');
+        setFoto('');
+        setDescricao('');
+      })
+      .catch(error => {
+        console.error("Erro ao adicionar carro:", error);
+      });
+  }
+
+  return (
+    <div className="card">
+      <h3 className="titulo">Cadastro de Carros</h3>
+      <form onSubmit={(e) => { e.preventDefault(); adicionaCarro(); }}>
+        <label>Nome:</label>
+        <input type="text" value={nome} onChange={e => setNome(e.target.value)} />
+        <br />
+        <label>Preço:</label>
+        <input type="text" value={preco} onChange={e => setPreco(e.target.value)} />
+        <br />
+        <label>Foto:</label>
+        <input type="text" value={foto} onChange={e => setFoto(e.target.value)} />
+        <br />
+        <label>Descrição:</label>
+        <input type="text" value={descricao} onChange={e => setDescricao(e.target.value)} />
+        <br /><br />
+        <button type="submit">Adicionar</button>
+      </form>
+    </div>
+  );
 }
