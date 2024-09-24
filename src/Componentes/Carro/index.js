@@ -3,6 +3,9 @@ import '../../index.css';
 import { MdDelete } from 'react-icons/md';
 
 const Carro = ({ valor, carregaCarros }) => {
+    // Ensure the ID is present
+    const id = valor._id; // Assuming _id is the field used for Mongoose ObjectId
+
     return (
         <div className='card'>
             <h3 className='titulo'>{valor.marca} {valor.modelo}</h3>
@@ -12,11 +15,16 @@ const Carro = ({ valor, carregaCarros }) => {
             <p className='subtitulo'>Quilometragem: {valor.quilometragem} km</p>
             <p className='subtitulo'>Tipo de Combustível: {valor.tipo_combustivel}</p>
             <img src={valor.foto_url} alt='Imagem do carro' className='imagem' />
-            <MdDelete className='icone' onClick={() => remover(valor.id)} />
+            <MdDelete className='icone' onClick={() => remover(id)} />
         </div>
     );
 
     function remover(id) {
+        if (!id) {
+            alert("ID do carro não encontrado.");
+            return;
+        }
+
         let api = "https://webimotores.onrender.com/carros";
         axios.delete(`${api}/${id}`)
             .then(() => {
