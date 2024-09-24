@@ -1,41 +1,138 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+      monospace;
 }
 
-.titulo {
-  font-size: 22pt;
-  font-weight: bold;
-  color: #333;
-}
-
-.subtitulo {
-  font-size: 18pt;
-  font-weight: bold;
-  color: #333;
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os cartões se movam para a próxima linha se não houver espaço */
+  justify-content: space-around; /* Distribui o espaço entre os cartões */
+  margin: 16px; /* Espaçamento ao redor do contêiner */
 }
 
 .card {
-  display: inline-block;
-  width: 300px;
-  background-color: #fffff0;
-  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  padding: 16px;
-  margin: 3px;
+  background-color: #f9f9f9; /* Cor de fundo suave */
+  border: 2px solid #e0e0e0; /* Borda leve */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  margin: 8px;
+  max-width: 220px;
+  text-align: center;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.titulo {
+  font-size: 1.5em; /* Aumentado para destaque */
+  font-weight: bold;
+  color: #2c3e50; /* Cor do título */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+.subtitulo {
+  font-size: 0.9em; /* Reduzido tamanho do subtítulo */
+  color: #666;
+  margin: 2px 0;
 }
 
 .imagem {
-  width: 80%;
-  max-height: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 8px 0;
 }
 
+.icone {
+  cursor: pointer;
+  color: #e74c3c;
+  font-size: 1.2em; /* Tamanho do ícone */
+  transition: color 0.2s;
+}
+
+.icone:hover {
+  color: #c0392b; /* Cor ao passar o mouse */
+}
+
+.error-message {
+  color: #d32f2f; /* Cor para mensagens de erro */
+  margin-bottom: 16px;
+}
+
+form {
+  display: flex;
+  flex-direction: column; /* Alinha os itens em coluna */
+}
+
+label {
+  margin: 8px 0 4px; /* Espaçamento entre o label e o input */
+  font-weight: bold;
+  color: #455a64; /* Cor dos labels */
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 12px; /* Espaçamento entre inputs */
+  font-size: 1em;
+  transition: border-color 0.3s; /* Transição suave para mudança de borda */
+}
+
+input:focus {
+  border-color: #00796b; /* Cor da borda ao focar */
+  outline: none; /* Remove o contorno padrão */
+}
+
+button {
+  background-color: #00796b; /* Cor do botão */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #005f57; /* Cor ao passar o mouse */
+}
+
+
+.card-form {
+  background-color: #ffffff; /* Cor de fundo branca */
+  border: 2px solid #00796b; /* Borda colorida para destacar */
+  border-radius: 12px; /* Bordas mais arredondadas */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
+  padding: 20px; /* Padding aumentado para mais espaço interno */
+  margin: 20px auto; /* Centralizado na página */
+  max-width: 400px; /* Largura máxima do formulário */
+  text-align: left; /* Alinhamento do texto à esquerda */
+}
+
+.card-form .titulo {
+  font-size: 1.8em; /* Aumentado para destaque */
+  color: #00796b; /* Cor do título do formulário */
+  margin-bottom: 15px; /* Espaço abaixo do título */
+}
+
+.card-form label {
+  color: #555; /* Cor mais suave para os labels */
+}
+
+.card-form input {
+  border: 1px solid #ccc; /* Borda leve nos inputs */
+}
+
+.card-form button {
+  background-color: #00796b; /* Cor do botão */
+  color: #fff; /* Cor do texto */
+}
+
+.card-form button:hover {
+  background-color: #005f57; /* Cor ao passar o mouse */
+}

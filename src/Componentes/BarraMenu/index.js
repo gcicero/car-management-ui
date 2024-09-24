@@ -26,7 +26,6 @@ const MenuLink = styled.a`
   color: #fff;
   text-decoration: none;
   padding: 10px;
-  border-radius: 5px;
  
   &:hover {
     background-color: #555;
@@ -43,12 +42,6 @@ class BarraMenu extends React.Component {
 </MenuItem>
 <MenuItem>
 <MenuLink href="/CadastroCarro">Cadastro</MenuLink>
-</MenuItem>
-<MenuItem>
-<MenuLink href="#">Serviços</MenuLink>
-</MenuItem>
-<MenuItem>
-<MenuLink href="#">Contato</MenuLink>
 </MenuItem>
 </MenuList>
 </Nav>

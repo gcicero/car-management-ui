@@ -3,8 +3,7 @@ import '../../index.css';
 import { MdDelete } from 'react-icons/md';
 
 const Carro = ({ valor, carregaCarros }) => {
-    // Ensure the ID is present
-    const id = valor._id; // Assuming _id is the field used for Mongoose ObjectId
+    const id = valor._id;
 
     return (
         <div className='card'>
@@ -25,7 +24,7 @@ const Carro = ({ valor, carregaCarros }) => {
             return;
         }
 
-        let api = "https://webimotores.onrender.com/carros";
+        const api = "https://webimotores.onrender.com/carros";
         axios.delete(`${api}/${id}`)
             .then(() => {
                 alert("Carro removido com sucesso!");
