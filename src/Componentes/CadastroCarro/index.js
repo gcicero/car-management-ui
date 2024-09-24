@@ -29,6 +29,8 @@ export default function CadastroCarro({ carregaCarros }) {
       preco: parseFloat(preco)  // Preço convertido para float
     };
 
+    console.log("Enviando os dados:", carro);  // Log dos dados que estão sendo enviados
+
     axios.post('https://webimotores.onrender.com/carros', carro)
       .then(() => {
         alert("Carro adicionado com sucesso!");
@@ -44,8 +46,21 @@ export default function CadastroCarro({ carregaCarros }) {
         setPreco('');  // Limpar o campo Preço
       })
       .catch(error => {
-        console.error("Erro ao adicionar carro:", error);
-        alert("Erro ao adicionar o carro. Tente novamente.");
+        if (error.response) {
+          // O servidor retornou uma resposta com status de erro (400, 500, etc)
+          console.error("Erro de resposta da API:", error.response.data);  // Dados do erro retornado
+          console.error("Status:", error.response.status);  // Status do erro
+          console.error("Headers:", error.response.headers);  // Headers da resposta
+          alert(`Erro ao adicionar o carro: ${error.response.data.message || 'Verifique os dados e tente novamente.'}`);
+        } else if (error.request) {
+          // A requisição foi feita, mas nenhuma resposta foi recebida
+          console.error("Erro de requisição:", error.request);
+          alert("Nenhuma resposta do servidor. Verifique sua conexão ou tente novamente mais tarde.");
+        } else {
+          // Erro ao configurar a requisição
+          console.error("Erro ao configurar a requisição:", error.message);
+          alert("Erro inesperado ao tentar adicionar o carro.");
+        }
       });
   }
 

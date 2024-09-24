@@ -1,9 +1,8 @@
-import logo from './logo.svg';
+
 import './App.css';
 import ListaCarros from './Componentes/ListaCarros'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import CadastroCarro from './Componentes/CadastroCarro';
 import BarraMenu from './Componentes/BarraMenu';
 
 
