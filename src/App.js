@@ -34,7 +34,7 @@ function App() {
       <BarraMenu />
       <h1>Lista Carros</h1>
       <ListaCarros carros = {carros} carregaCarros = {carregaCarros} />
-      <CadastroCarro carregaCarros = {carregaCarros} />
+      
       
     </div>
   );
