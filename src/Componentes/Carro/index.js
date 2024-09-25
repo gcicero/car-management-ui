@@ -1,20 +1,30 @@
 import axios from "axios";
 import '../../index.css';
 import { MdDelete } from 'react-icons/md';
+import { FaCar, FaGasPump } from 'react-icons/fa';
+import { GiPathDistance } from 'react-icons/gi';
 
 const Carro = ({ valor, carregaCarros }) => {
     const id = valor._id;
 
     return (
-        <div className='card'>
-            <h3 className='titulo'>{valor.marca} {valor.modelo}</h3>
-            <p className='subtitulo'>Ano: {valor.ano}</p>
-            <p className='subtitulo'>Cor: {valor.cor}</p>
-            <p className='subtitulo'>Preço: R$ {valor.preco}</p>
-            <p className='subtitulo'>Quilometragem: {valor.quilometragem} km</p>
-            <p className='subtitulo'>Tipo de Combustível: {valor.tipo_combustivel}</p>
-            <img src={valor.foto_url} alt='Imagem do carro' className='imagem' />
-            <MdDelete className='icone' onClick={() => remover(id)} />
+        <div className='car-card'>
+            <div className='car-card-header'>
+                <img src={valor.foto_url} alt='Imagem do carro' className='car-image' />
+            </div>
+            <div className='car-info'>
+                <h3 className='car-title'>{valor.marca} {valor.modelo}</h3>
+                <p className='car-price'>R$ {valor.preco.toLocaleString('pt-BR')}</p>
+                <p className='car-detail'>
+                    <FaCar /> {valor.ano} &nbsp; | &nbsp;
+                    <FaGasPump /> {valor.tipo_combustivel} &nbsp; | &nbsp;
+                    <GiPathDistance /> {valor.quilometragem} km
+                </p>
+            </div>
+            <button className='car-delete' onClick={() => remover(id)}>
+                <MdDelete className='delete-icon' />
+                Remover
+            </button>
         </div>
     );
 

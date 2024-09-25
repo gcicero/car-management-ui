@@ -18,7 +18,7 @@ export default function CadastroCarro({ carregaCarros }) {
       setError("Todos os campos são obrigatórios!");
       return;
     }
-
+  
     const carro = {
       marca,
       modelo,
@@ -29,7 +29,7 @@ export default function CadastroCarro({ carregaCarros }) {
       foto_url: fotoUrl,
       preco: parseFloat(preco)
     };
-
+  
     try {
       await axios.post('https://webimotores.onrender.com/carros', carro);
       alert("Carro adicionado com sucesso!");
@@ -55,7 +55,7 @@ export default function CadastroCarro({ carregaCarros }) {
   return (
     <div className="card-form">
       <h3 className="titulo">Cadastro de Carros</h3>
-      {error && <p className="error-message">{error}</p>}
+      {error && <p className="error-message"></p>}
       <form onSubmit={(e) => { e.preventDefault(); adicionaCarro(); }}>
         <label>Marca:</label>
         <input type="text" value={marca} onChange={e => setMarca(e.target.value)} required />
