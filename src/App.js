@@ -19,7 +19,6 @@ function App() {
     axios.get('https://webimotores.onrender.com/carros')
       .then(res => {
         setCarros(res.data);
-        console.log(res.data);
       })
       .catch(error => {
         console.error("Erro ao carregar carros:", error);
